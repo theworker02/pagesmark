@@ -1,6 +1,6 @@
 # pagesmark
 
-<img src="docs/logo.svg" alt="pagesmark mark" width="88" height="88">
+<img src="docs/logo.svg" alt="pagesmark mark" width="96" height="96">
 
 **Write docs/index.html, docs/styles.css, and docs/logo.svg so Pages on main /docs has somewhere to start.**
 
@@ -11,6 +11,8 @@
 ![release 1.00](https://img.shields.io/github/v/release/theworker02/pagesmark?display_name=release)
 
 Package version **1.00** (`1.0.0`). Default branch is **`main`** — never `master`.
+
+**Docs:** [GitHub Pages](https://theworker02.github.io/pagesmark/) · **Source:** [`theworker02/pagesmark`](https://github.com/theworker02/pagesmark) · **Release 1.00:** [`v1.0.0`](https://github.com/theworker02/pagesmark/releases/tag/v1.0.0)
 
 ## Why it exists
 
