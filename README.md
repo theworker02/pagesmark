@@ -59,23 +59,50 @@ You should see index.html, styles.css, and logo.svg.
 
 ## CLI reference
 
-Synopsis:
-
 ```text
-pagesmark <command> [dir]
-```
+pagesmark 1.00 (1.0.0)
 
-| Flag / argument | Meaning |
-| --- | --- |
-| `-h, --help` | Print detailed usage and exit 0. |
-| `-v, --version` | Print 1.0.0 and exit 0. |
-| `init [dir]` | Create docs/ under dir (default cwd) with index.html, styles.css, and logo.svg. |
+Usage:
+  pagesmark init [options] [dir]
+  pagesmark check [options] [dir]
+
+Write or inspect a GitHub Pages stub:
+  docs/index.html
+  docs/styles.css
+  docs/logo.svg
+
+Enable Pages with: Settings → Pages → Deploy from a branch → main → /docs
+
+Subcommands:
+  init               Create the three starter files (default)
+  check              Verify those files already exist
+
+Options:
+  -h, --help         Show this help and exit 0
+  -V, -v, --version  Print 1.0.0 and exit 0
+  --json             JSON result
+  --force            Overwrite existing docs files
+  --title <name>     Title used in index.html (default: directory basename)
+  --color <#RRGGBB>  Accent color (default #C9A227); navy stays #0B1F33
+
+Exit codes:
+  0  init wrote files, or check found all three
+  1  missing files, refused overwrite, or bad --color
+
+Examples:
+  pagesmark init
+  pagesmark init --title "My CLI" --color #C9A227
+  pagesmark init --force ./website
+  pagesmark check --json
+```
 
 Print the same text locally:
 
 ```bash
 pagesmark --help
+pagesmark -h
 pagesmark --version
+pagesmark -V
 ```
 
 Expected version output:
@@ -86,37 +113,41 @@ Expected version output:
 
 ## Configuration
 
-No configuration. Output paths are always <dir>/docs/{index.html,styles.css,logo.svg}. Existing files are overwritten.
+Writes `docs/index.html`, `docs/styles.css`, and `docs/logo.svg`. Accent `--color` must be `#RRGGBB`.
 
 ## Exit codes
 
 | Code | Meaning |
 | --- | --- |
-| `0` | docs/ written. |
-| `1` | Missing init subcommand. |
+| `0` | init wrote files, or check found all three. |
+| `1` | Missing files, refused overwrite, or bad --color. |
 
 ## Examples
 
 ### Success path
 
+Initialize a Pages stub, then check it.
+
 ```bash
-pagesmark init ./mysite
+pagesmark init --title Demo
+pagesmark check
 ```
 
-```json
-{"dir":".../mysite/docs","files":["index.html","styles.css","logo.svg"]}
+```text
+wrote index.html, styles.css, logo.svg in /abs/docs
+pagesmark: OK
 ```
 
 ### Failure path
 
-Unknown command.
+Existing docs refuse overwrite without --force.
 
 ```bash
-pagesmark
+pagesmark init
 ```
 
 ```text
-usage: pagesmark init [dir]
+docs already has index.html, styles.css, logo.svg; pass --force to overwrite
 ```
 
 Exit code is 1.

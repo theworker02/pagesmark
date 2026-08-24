@@ -30,27 +30,62 @@
   <div class="wrap">
     <section>
       <h2>Synopsis</h2>
-      <pre><code>pagesmark &lt;command&gt; [dir]</code></pre>
-      <div class="callout sans"><strong>Tip:</strong> <code>pagesmark --help</code> prints this text in the terminal. <code>pagesmark --version</code> prints <code>1.0.0</code>.</div>
+      <pre><code>pagesmark 1.00 (1.0.0)
+
+Usage:
+  pagesmark init [options] [dir]
+  pagesmark check [options] [dir]
+
+Write or inspect a GitHub Pages stub:
+  docs/index.html
+  docs/styles.css
+  docs/logo.svg
+
+Enable Pages with: Settings → Pages → Deploy from a branch → main → /docs
+
+Subcommands:
+  init               Create the three starter files (default)
+  check              Verify those files already exist
+
+Options:
+  -h, --help         Show this help and exit 0
+  -V, -v, --version  Print 1.0.0 and exit 0
+  --json             JSON result
+  --force            Overwrite existing docs files
+  --title &lt;name&gt;     Title used in index.html (default: directory basename)
+  --color &lt;#RRGGBB&gt;  Accent color (default #C9A227); navy stays #0B1F33
+
+Exit codes:
+  0  init wrote files, or check found all three
+  1  missing files, refused overwrite, or bad --color
+
+Examples:
+  pagesmark init
+  pagesmark init --title "My CLI" --color #C9A227
+  pagesmark init --force ./website
+  pagesmark check --json</code></pre>
+      <div class="callout sans"><strong>Tip:</strong> <code>pagesmark --help</code> and <code>-h</code> print this text. <code>pagesmark --version</code> and <code>-V</code> print <code>1.0.0</code>.</div>
     </section>
     <section>
       <h2>Flags and arguments</h2>
-      <table class="sans"><thead><tr><th>Flag / argument</th><th>Meaning</th></tr></thead><tbody><tr><td><code>-h, --help</code></td><td>Print detailed usage and exit 0.</td></tr><tr><td><code>-v, --version</code></td><td>Print 1.0.0 and exit 0.</td></tr><tr><td><code>init [dir]</code></td><td>Create docs/ under dir (default cwd) with index.html, styles.css, and logo.svg.</td></tr></tbody></table>
+      <p>The complete flag list is in <code>pagesmark --help</code> (shown above). Human output is the default; pass <code>--json</code> where supported.</p>
     </section>
     <section>
       <h2>Exit codes</h2>
-      <table class="sans"><thead><tr><th>Code</th><th>Meaning</th></tr></thead><tbody><tr><td><code>0</code></td><td>docs/ written.</td></tr><tr><td><code>1</code></td><td>Missing init subcommand.</td></tr></tbody></table>
+      <table class="sans"><thead><tr><th>Code</th><th>Meaning</th></tr></thead><tbody><tr><td><code>0</code></td><td>init wrote files, or check found all three.</td></tr><tr><td><code>1</code></td><td>Missing files, refused overwrite, or bad --color.</td></tr></tbody></table>
     </section>
     <section>
       <h2>Configuration</h2>
-      <p>No configuration. Output paths are always &lt;dir&gt;/docs/{index.html,styles.css,logo.svg}. Existing files are overwritten.</p>
+      <p>Writes `docs/index.html`, `docs/styles.css`, and `docs/logo.svg`. Accent `--color` must be `#RRGGBB`.</p>
     </section>
     <section id="examples">
       <h2>Worked examples</h2>
       <h3 class="ok">Success path</h3>
-      <pre><code>pagesmark init ./mysite</code></pre><pre><code>{"dir":".../mysite/docs","files":["index.html","styles.css","logo.svg"]}</code></pre>
+      <p>Initialize a Pages stub, then check it.</p><pre><code>pagesmark init --title Demo
+pagesmark check</code></pre><pre><code>wrote index.html, styles.css, logo.svg in /abs/docs
+pagesmark: OK</code></pre>
       <h3 class="fail">Failure path</h3>
-      <p>Unknown command.</p><pre><code>pagesmark</code></pre><pre><code>usage: pagesmark init [dir]</code></pre><p>Exit code is 1.</p>
+      <p>Existing docs refuse overwrite without --force.</p><pre><code>pagesmark init</code></pre><pre><code>docs already has index.html, styles.css, logo.svg; pass --force to overwrite</code></pre><p>Exit code is 1.</p>
     </section>
   </div>
   <footer class="sans">

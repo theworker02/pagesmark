@@ -42,9 +42,40 @@
     <section id="install">
       <h2>Install</h2>
       <p>Install globally from Git, or run with Node from a clone. There are no extra dependencies.</p>
-      <pre><code>npm install -g git+https://github.com/theworker02/pagesmark.git
-pagesmark --help
-node src/cli.js --help</code></pre>
+      <pre><code>pagesmark 1.00 (1.0.0)
+
+Usage:
+  pagesmark init [options] [dir]
+  pagesmark check [options] [dir]
+
+Write or inspect a GitHub Pages stub:
+  docs/index.html
+  docs/styles.css
+  docs/logo.svg
+
+Enable Pages with: Settings → Pages → Deploy from a branch → main → /docs
+
+Subcommands:
+  init               Create the three starter files (default)
+  check              Verify those files already exist
+
+Options:
+  -h, --help         Show this help and exit 0
+  -V, -v, --version  Print 1.0.0 and exit 0
+  --json             JSON result
+  --force            Overwrite existing docs files
+  --title &lt;name&gt;     Title used in index.html (default: directory basename)
+  --color &lt;#RRGGBB&gt;  Accent color (default #C9A227); navy stays #0B1F33
+
+Exit codes:
+  0  init wrote files, or check found all three
+  1  missing files, refused overwrite, or bad --color
+
+Examples:
+  pagesmark init
+  pagesmark init --title "My CLI" --color #C9A227
+  pagesmark init --force ./website
+  pagesmark check --json</code></pre>
     </section>
     <section id="usage">
       <h2>Usage</h2>
@@ -77,11 +108,13 @@ Examples:
       <div class="grid-2">
         <div>
           <h3 class="ok">Success</h3>
-          <pre><code>pagesmark init ./mysite</code></pre><pre><code>{"dir":".../mysite/docs","files":["index.html","styles.css","logo.svg"]}</code></pre>
+          <p>Initialize a Pages stub, then check it.</p><pre><code>pagesmark init --title Demo
+pagesmark check</code></pre><pre><code>wrote index.html, styles.css, logo.svg in /abs/docs
+pagesmark: OK</code></pre>
         </div>
         <div>
           <h3 class="fail">Failure</h3>
-          <p>Unknown command.</p><pre><code>pagesmark</code></pre><pre><code>usage: pagesmark init [dir]</code></pre><p>Exit code is 1.</p>
+          <p>Existing docs refuse overwrite without --force.</p><pre><code>pagesmark init</code></pre><pre><code>docs already has index.html, styles.css, logo.svg; pass --force to overwrite</code></pre><p>Exit code is 1.</p>
         </div>
       </div>
     </section>
