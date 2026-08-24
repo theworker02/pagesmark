@@ -1,9 +1,9 @@
 {
-  "name": "pagesmark",
+  "name": "@magnexis/pagesmark",
   "version": "1.0.0",
   "description": "Write docs/index.html, docs/styles.css, and docs/logo.svg so Pages on main /docs has somewhere to start.",
   "bin": {
-    "pagesmark": "./src/cli.js"
+    "pagesmark": "src/cli.js"
   },
   "main": "./src/index.js",
   "scripts": {
@@ -32,5 +32,8 @@
     "docs",
     "static",
     "cli"
-  ]
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
 }
