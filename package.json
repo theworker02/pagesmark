@@ -1,6 +1,6 @@
 {
   "name": "pagesmark",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Initialize a docs/ GitHub Pages stub with brand mark and styles.",
   "bin": {
     "pagesmark": "./src/cli.js"
