@@ -1,15 +1,37 @@
 # pagesmark
 
-<img src="docs/logo.svg" alt="pagesmark mark" width="72" height="72">
+<img src="docs/logo.svg" alt="pagesmark mark" width="88" height="88">
+
+**Write docs/index.html, docs/styles.css, and docs/logo.svg so Pages on main /docs has somewhere to start.**
 
 ![version 1.00](https://img.shields.io/badge/version-1.00-C9A227?labelColor=0B1F33)
-![npm 1.0.0](https://img.shields.io/badge/npm-1.0.0-0B1F33)
+![branch main](https://img.shields.io/badge/branch-main-0B1F33?labelColor=C9A227)
+![license MIT](https://img.shields.io/badge/license-MIT-0B1F33)
+![node >=18](https://img.shields.io/badge/node-%3E%3D18-C9A227?labelColor=0B1F33)
+![release 1.00](https://img.shields.io/github/v/release/theworker02/pagesmark?display_name=release)
 
-Write a docs/ GitHub Pages stub: index.html, styles.css, and a logo SVG. Usage: pagesmark init [dir].
+Package version **1.00** (`1.0.0`). Default branch is **`main`** — never `master`.
 
-Package version: **1.00** (`1.0.0`).
+## Why it exists
+
+Empty Pages settings fail mysteriously. pagesmark drops a navy-and-gold stub that already matches this family's brand so you can enable Pages immediately.
+
+## Who it is for
+
+Maintainers standing up documentation sites for small Node CLIs.
 
 ## Install
+
+Requires Node.js 18 or newer. No extra npm dependencies.
+
+### Global install from GitHub
+
+```bash
+npm install -g git+https://github.com/theworker02/pagesmark.git
+pagesmark --help
+```
+
+### Clone and link locally
 
 ```bash
 git clone https://github.com/theworker02/pagesmark.git
@@ -17,16 +39,124 @@ cd pagesmark
 npm install -g .
 ```
 
-## Usage
+### Run without installing (npx / node)
 
 ```bash
-pagesmark init [dir]
+npx --yes git+https://github.com/theworker02/pagesmark.git --help
+node src/cli.js --help
 ```
+
+## Quick start
+
+```bash
+pagesmark init ./mysite
+ls mysite/docs
+```
+
+You should see index.html, styles.css, and logo.svg.
+
+## CLI reference
+
+Synopsis:
+
+```text
+pagesmark <command> [dir]
+```
+
+| Flag / argument | Meaning |
+| --- | --- |
+| `-h, --help` | Print detailed usage and exit 0. |
+| `-v, --version` | Print 1.0.0 and exit 0. |
+| `init [dir]` | Create docs/ under dir (default cwd) with index.html, styles.css, and logo.svg. |
+
+Print the same text locally:
+
+```bash
+pagesmark --help
+pagesmark --version
+```
+
+Expected version output:
+
+```text
+1.0.0
+```
+
+## Configuration
+
+No configuration. Output paths are always <dir>/docs/{index.html,styles.css,logo.svg}. Existing files are overwritten.
+
+## Exit codes
+
+| Code | Meaning |
+| --- | --- |
+| `0` | docs/ written. |
+| `1` | Missing init subcommand. |
+
+## Examples
+
+### Success path
+
+```bash
+pagesmark init ./mysite
+```
+
+```json
+{"dir":".../mysite/docs","files":["index.html","styles.css","logo.svg"]}
+```
+
+### Failure path
+
+Unknown command.
+
+```bash
+pagesmark
+```
+
+```text
+usage: pagesmark init [dir]
+```
+
+Exit code is 1.
+
+## How to run tests
+
+No extra packages. From the repository root:
+
+```bash
+npm test
+# same as:
+node --test
+```
+
+All tests must pass before you open a pull request against `main`.
 
 ## GitHub Pages
 
-Source: `main` branch, `/docs` folder. Enable Pages, then open `https://theworker02.github.io/pagesmark/`.
+This repository ships a product site in `/docs`.
+
+1. Open **Settings → Pages**.
+2. Under **Build and deployment**, set **Source** to **Deploy from a branch**.
+3. Branch: **`main`**.
+4. Folder: **`/docs`**.
+5. Save, then wait for the Pages deployment.
+6. Open [https://theworker02.github.io/pagesmark/](https://theworker02.github.io/pagesmark/).
+
+Do not point Pages at `master`. The default branch is `main`.
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md). Open pull requests against **`main`**.
+
+## Security
+
+See [SECURITY.md](SECURITY.md). Please report vulnerabilities privately.
 
 ## License
 
-MIT © 2026 theworker02
+[MIT](LICENSE) © 2026 theworker02
+
+## Funding
+
+- GitHub Sponsors: [theworker02](https://github.com/sponsors/theworker02)
+- thanks.dev: [https://thanks.dev/u/gh/theworker02](https://thanks.dev/u/gh/theworker02)

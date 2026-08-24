@@ -1,7 +1,18 @@
 #!/usr/bin/env node
 const { init } = require("./index.js");
+const { HELP, VERSION } = require("./help.js");
 
-const [command, dir] = process.argv.slice(2);
+const args = process.argv.slice(2);
+if (args.includes("-h") || args.includes("--help")) {
+  process.stdout.write(HELP);
+  process.exit(0);
+}
+if (args.includes("-v") || args.includes("--version")) {
+  process.stdout.write(`${VERSION}\n`);
+  process.exit(0);
+}
+
+const [command, dir] = args;
 if (command !== "init") {
   process.stderr.write("usage: pagesmark init [dir]\n");
   process.exit(1);

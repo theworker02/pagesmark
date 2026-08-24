@@ -1,7 +1,7 @@
 {
   "name": "pagesmark",
   "version": "1.0.0",
-  "description": "Initialize a docs/ GitHub Pages stub with brand mark and styles.",
+  "description": "Write docs/index.html, docs/styles.css, and docs/logo.svg so Pages on main /docs has somewhere to start.",
   "bin": {
     "pagesmark": "./src/cli.js"
   },
@@ -12,5 +12,25 @@
   "license": "MIT",
   "engines": {
     "node": ">=18"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/theworker02/pagesmark.git"
+  },
+  "homepage": "https://theworker02.github.io/pagesmark/",
+  "bugs": {
+    "url": "https://github.com/theworker02/pagesmark/issues"
+  },
+  "files": [
+    "src",
+    "docs",
+    "LICENSE",
+    "README.md"
+  ],
+  "keywords": [
+    "github-pages",
+    "docs",
+    "static",
+    "cli"
+  ]
 }
