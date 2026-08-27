@@ -1,39 +1,16 @@
 {
-  "name": "@magnexis/pagesmark",
-  "version": "1.0.0",
-  "description": "Write docs/index.html, docs/styles.css, and docs/logo.svg so Pages on main /docs has somewhere to start.",
-  "bin": {
-    "pagesmark": "src/cli.js"
-  },
+  "name": "@theworker02/pagesmark",
+  "version": "1.2.0",
+  "private": true,
+  "description": "Generate and validate a compact GitHub Pages starter site with a reusable API.",
+  "bin": { "pagesmark": "src/cli.js" },
   "main": "./src/index.js",
-  "scripts": {
-    "test": "node --test"
-  },
+  "scripts": { "test": "node --test" },
   "license": "MIT",
-  "engines": {
-    "node": ">=18"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/theworker02/pagesmark.git"
-  },
+  "engines": { "node": ">=18" },
+  "repository": { "type": "git", "url": "https://github.com/theworker02/pagesmark.git" },
   "homepage": "https://theworker02.github.io/pagesmark/",
-  "bugs": {
-    "url": "https://github.com/theworker02/pagesmark/issues"
-  },
-  "files": [
-    "src",
-    "docs",
-    "LICENSE",
-    "README.md"
-  ],
-  "keywords": [
-    "github-pages",
-    "docs",
-    "static",
-    "cli"
-  ],
-  "publishConfig": {
-    "access": "public"
-  }
+  "bugs": { "url": "https://github.com/theworker02/pagesmark/issues" },
+  "files": ["src", "docs", "LICENSE", "README.md"],
+  "keywords": ["github-pages", "docs", "static", "cli", "jsr"]
 }
