@@ -3,132 +3,28 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>pagesmark  · 1.00</title>
+  <title>pagesmark · 1.2.0</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <nav class="nav sans">
     <a class="brand-lockup" href="index.html"><img src="logo.svg" alt=""> pagesmark</a>
-    <div class="links">
-      <a href="index.html#overview">Overview</a>
-      <a href="index.html#install">Install</a>
-      <a href="usage.html">Usage</a>
-      <a href="index.html#examples">Examples</a>
-      <a href="https://github.com/theworker02/pagesmark">GitHub</a>
-      <a href="https://www.npmjs.com/package/%40magnexis/pagesmark">npm</a>
-      <a href="https://github.com/theworker02/pagesmark/releases/tag/v1.0.0">1.00</a>
-    </div>
+    <div class="links"><a href="#overview">Overview</a><a href="#api">API</a><a href="#examples">Examples</a><a href="https://jsr.io/@theworker02/pagesmark">JSR</a><a href="https://github.com/theworker02/pagesmark">GitHub</a></div>
   </nav>
-  
   <header class="hero">
     <img src="logo.svg" alt="pagesmark mark">
-    <div>
-      <p class="kicker sans">theworker02 · version 1.00</p>
-      <h1>pagesmark</h1>
-      <p class="lede">Write docs/index.html, docs/styles.css, and docs/logo.svg so Pages on main /docs has somewhere to start.</p>
-      <div class="badges sans">
-        <span class="badge">1.00 / 1.0.0</span>
-        <span class="badge">branch main</span>
-        <span class="badge">MIT</span>
-        <span class="badge">Node.js >= 18</span>
-      </div>
-    </div>
+    <div><p class="kicker sans">@theworker02/pagesmark · JSR · 1.2.0</p><h1>pagesmark</h1><p class="lede">Generate and validate a polished three-file GitHub Pages starter site.</p><div class="badges sans"><span class="badge">1.2.0</span><span class="badge">JSR</span><span class="badge">MIT</span><span class="badge">Node.js ≥ 18</span></div></div>
   </header>
   <div class="wrap">
-    <section id="overview">
-      <h2>Overview</h2>
-      <p>Empty Pages settings fail mysteriously. pagesmark drops a navy-and-gold stub that already matches this family's brand so you can enable Pages immediately.</p>
-      <p>Maintainers standing up documentation sites for small Node CLIs.</p>
-    </section>
-    <section id="install">
-      <h2>Install</h2>
-      <p>Install globally from npm, or run with Node from a clone. There are no extra dependencies.</p>
-      <p>Package: <a href="https://www.npmjs.com/package/%40magnexis/pagesmark"><code>@magnexis/pagesmark</code></a></p>
-      <pre><code>npm i -g @magnexis/pagesmark
-pagesmark --help</code></pre>
-      <pre><code>pagesmark 1.00 (1.0.0)
+    <section id="overview"><h2>Overview</h2><p>PagesMark creates a predictable `docs/` surface with HTML, CSS, and SVG assets. Version 1.2.0 adds an in-memory bundle API, required-file metadata, color validation, package metadata, and richer generated symbol documentation.</p></section>
+    <section id="api"><h2>Structured API</h2><p>Canonical package: <a href="https://jsr.io/@theworker02/pagesmark"><code>@theworker02/pagesmark</code></a></p><pre><code>import { createBundle, REQUIRED_FILES, PACKAGE } from "@theworker02/pagesmark";
 
-Usage:
-  pagesmark init [options] [dir]
-  pagesmark check [options] [dir]
-
-Write or inspect a GitHub Pages stub:
-  docs/index.html
-  docs/styles.css
-  docs/logo.svg
-
-Enable Pages with: Settings → Pages → Deploy from a branch → main → /docs
-
-Subcommands:
-  init               Create the three starter files (default)
-  check              Verify those files already exist
-
-Options:
-  -h, --help         Show this help and exit 0
-  -V, -v, --version  Print 1.0.0 and exit 0
-  --json             JSON result
-  --force            Overwrite existing docs files
-  --title &lt;name&gt;     Title used in index.html (default: directory basename)
-  --color &lt;#RRGGBB&gt;  Accent color (default #C9A227); navy stays #0B1F33
-
-Exit codes:
-  0  init wrote files, or check found all three
-  1  missing files, refused overwrite, or bad --color
-
-Examples:
-  pagesmark init
-  pagesmark init --title "My CLI" --color #C9A227
-  pagesmark init --force ./website
-  pagesmark check --json</code></pre>
-    </section>
-    <section id="usage">
-      <h2>Usage</h2>
-      <p>Synopsis: <code>pagesmark &lt;command&gt; [dir]</code></p>
-      <p>See the <a href="usage.html">full CLI reference</a> for every flag, exit code, and example.</p>
-      <pre><code>pagesmark 1.00 (1.0.0)
-
-Usage:
-  pagesmark init [dir]
-  pagesmark --help
-  pagesmark --version
-
-Write a GitHub Pages stub:
-  docs/index.html
-  docs/styles.css
-  docs/logo.svg
-
-Enable Pages with: Settings → Pages → Deploy from a branch → main → /docs
-
-Options:
-  -h, --help       Show this help
-  -v, --version    Print 1.0.0
-
-Examples:
-  pagesmark init
-  pagesmark init ./website</code></pre>
-    </section>
-    <section id="examples">
-      <h2>Examples</h2>
-      <div class="grid-2">
-        <div>
-          <h3 class="ok">Success</h3>
-          <p>Initialize a Pages stub, then check it.</p><pre><code>pagesmark init --title Demo
-pagesmark check</code></pre><pre><code>wrote index.html, styles.css, logo.svg in /abs/docs
-pagesmark: OK</code></pre>
-        </div>
-        <div>
-          <h3 class="fail">Failure</h3>
-          <p>Existing docs refuse overwrite without --force.</p><pre><code>pagesmark init</code></pre><pre><code>docs already has index.html, styles.css, logo.svg; pass --force to overwrite</code></pre><p>Exit code is 1.</p>
-        </div>
-      </div>
-    </section>
+const bundle = createBundle("Demo", { color: "#C9A227" });
+console.log(REQUIRED_FILES, PACKAGE.version, bundle["index.html"]);</code></pre></section>
+    <section id="examples"><h2>CLI from source</h2><pre><code>git clone https://github.com/theworker02/pagesmark.git
+cd pagesmark
+node src/cli.js init ./website --title "Demo"</code></pre></section>
   </div>
-  <footer class="sans">
-    MIT © 2026 theworker02 · version <strong>1.00</strong> (<code>1.0.0</code>) ·
-    navy <code>#0B1F33</code> · gold <code>#C9A227</code> ·
-    <a href="https://www.npmjs.com/package/%40magnexis/pagesmark">npm</a> ·
-    <a href="https://github.com/theworker02/pagesmark">GitHub</a> ·
-    <a href="https://thanks.dev/u/gh/theworker02">thanks.dev</a>
-  </footer>
+  <footer class="sans">MIT © 2026 theworker02 · <strong>1.2.0</strong> · <a href="https://jsr.io/@theworker02/pagesmark">JSR</a> · <a href="https://github.com/theworker02/pagesmark">GitHub</a></footer>
 </body>
 </html>
