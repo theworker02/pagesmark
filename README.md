@@ -2,204 +2,96 @@
 
 <img src="docs/logo.svg" alt="pagesmark mark" width="96" height="96">
 
-**Write docs/index.html, docs/styles.css, and docs/logo.svg so Pages on main /docs has somewhere to start.**
+**Generate and validate a compact GitHub Pages starter site with a reusable, documented API.**
 
-![version 1.00](https://img.shields.io/badge/version-1.00-C9A227?labelColor=0B1F33)
-![branch main](https://img.shields.io/badge/branch-main-0B1F33?labelColor=C9A227)
+[![JSR](https://jsr.io/badges/@theworker02/pagesmark)](https://jsr.io/@theworker02/pagesmark)
+![version 1.2.0](https://img.shields.io/badge/version-1.2.0-C9A227?labelColor=0B1F33)
 ![license MIT](https://img.shields.io/badge/license-MIT-0B1F33)
 ![node >=18](https://img.shields.io/badge/node-%3E%3D18-C9A227?labelColor=0B1F33)
-![release 1.00](https://img.shields.io/github/v/release/theworker02/pagesmark?display_name=release)
-[![npm](https://img.shields.io/npm/v/%40magnexis/pagesmark.svg)](https://www.npmjs.com/package/%40magnexis/pagesmark)
 
-Package version **1.00** (`1.0.0`). Default branch is **`main`** — never `master`.
+**Package:** [`@theworker02/pagesmark`](https://jsr.io/@theworker02/pagesmark) · **Docs:** [GitHub Pages](https://theworker02.github.io/pagesmark/) · **Source:** [`theworker02/pagesmark`](https://github.com/theworker02/pagesmark)
 
-**Docs:** [GitHub Pages](https://theworker02.github.io/pagesmark/) · **Source:** [`theworker02/pagesmark`](https://github.com/theworker02/pagesmark) · **Release 1.00:** [`v1.0.0`](https://github.com/theworker02/pagesmark/releases/tag/v1.0.0) · **npm:** [`@magnexis/pagesmark`](https://www.npmjs.com/package/%40magnexis/pagesmark)
+## Highlights
 
-## Why it exists
+- Generates `docs/index.html`, `docs/styles.css`, and `docs/logo.svg`.
+- Supports custom titles and accent colors.
+- Can build the full site bundle in memory with `createBundle()`.
+- Exposes required file metadata and color validation.
+- Fully documented JSR symbols and TypeScript declarations.
+- Trusted publishing from GitHub Actions with provenance.
 
-Empty Pages settings fail mysteriously. pagesmark drops a navy-and-gold stub that already matches this family's brand so you can enable Pages immediately.
-
-## Who it is for
-
-Maintainers standing up documentation sites for small Node CLIs.
-
-## Install
-
-Requires Node.js 18 or newer. No extra npm dependencies.
-
-### Global install from npm
+## Add from JSR
 
 ```bash
-npm i -g @magnexis/pagesmark
-pagesmark --help
+deno add jsr:@theworker02/pagesmark
 ```
 
-Package page: https://www.npmjs.com/package/%40magnexis/pagesmark
+```ts
+import { createBundle, REQUIRED_FILES, PACKAGE } from "@theworker02/pagesmark";
 
-### Global install from GitHub
-
-```bash
-npm install -g git+https://github.com/theworker02/pagesmark.git
-pagesmark --help
+const bundle = createBundle("My Project", { color: "#C9A227" });
+console.log(REQUIRED_FILES, PACKAGE.version, bundle["index.html"]);
 ```
 
-### Clone and link locally
+## Public API
+
+### Site generation
+
+- `createBundle(name, options)` — build the complete three-file site in memory.
+- `init(dir, options)` — write the generated site to `docs/`.
+- `check(dir)` — validate that the required starter files exist.
+- `htmlFor(name)`, `stylesFor(color)`, `logoFor(color)` — generate individual assets.
+
+### Metadata and validation
+
+- `PACKAGE` — package identity and version metadata.
+- `REQUIRED_FILES` — canonical PagesMark file list.
+- `isValidColor(value)` — validate `#RRGGBB` accent colors.
+- `NAVY`, `GOLD`, `LOGO`, `STYLES` — default design primitives.
+- `requiredFiles(path)` — resolve required file paths.
+
+### Types
+
+`InitOptions`, `InitResult`, `CheckResult`, `PageBundle`, and `PackageMetadata` are all documented in JSR.
+
+## CLI from source
 
 ```bash
 git clone https://github.com/theworker02/pagesmark.git
 cd pagesmark
-npm install -g .
-```
-
-### Run without installing (npx / node)
-
-```bash
-npx --yes @magnexis/pagesmark --help
 node src/cli.js --help
 ```
 
-## Quick start
+Initialize a site:
 
 ```bash
-pagesmark init ./mysite
-ls mysite/docs
+node src/cli.js init ./website --title "My Project" --color "#C9A227"
 ```
 
-You should see index.html, styles.css, and logo.svg.
-
-## CLI reference
-
-```text
-pagesmark 1.00 (1.0.0)
-
-Usage:
-  pagesmark init [options] [dir]
-  pagesmark check [options] [dir]
-
-Write or inspect a GitHub Pages stub:
-  docs/index.html
-  docs/styles.css
-  docs/logo.svg
-
-Enable Pages with: Settings → Pages → Deploy from a branch → main → /docs
-
-Subcommands:
-  init               Create the three starter files (default)
-  check              Verify those files already exist
-
-Options:
-  -h, --help         Show this help and exit 0
-  -V, -v, --version  Print 1.0.0 and exit 0
-  --json             JSON result
-  --force            Overwrite existing docs files
-  --title <name>     Title used in index.html (default: directory basename)
-  --color <#RRGGBB>  Accent color (default #C9A227); navy stays #0B1F33
-
-Exit codes:
-  0  init wrote files, or check found all three
-  1  missing files, refused overwrite, or bad --color
-
-Examples:
-  pagesmark init
-  pagesmark init --title "My CLI" --color #C9A227
-  pagesmark init --force ./website
-  pagesmark check --json
-```
-
-Print the same text locally:
+## Development
 
 ```bash
-pagesmark --help
-pagesmark -h
-pagesmark --version
-pagesmark -V
-```
-
-Expected version output:
-
-```text
-1.0.0
-```
-
-## Configuration
-
-Writes `docs/index.html`, `docs/styles.css`, and `docs/logo.svg`. Accent `--color` must be `#RRGGBB`.
-
-## Exit codes
-
-| Code | Meaning |
-| --- | --- |
-| `0` | init wrote files, or check found all three. |
-| `1` | Missing files, refused overwrite, or bad --color. |
-
-## Examples
-
-### Success path
-
-Initialize a Pages stub, then check it.
-
-```bash
-pagesmark init --title Demo
-pagesmark check
-```
-
-```text
-wrote index.html, styles.css, logo.svg in /abs/docs
-pagesmark: OK
-```
-
-### Failure path
-
-Existing docs refuse overwrite without --force.
-
-```bash
-pagesmark init
-```
-
-```text
-docs already has index.html, styles.css, logo.svg; pass --force to overwrite
-```
-
-Exit code is 1.
-
-## How to run tests
-
-No extra packages. From the repository root:
-
-```bash
-npm test
-# same as:
 node --test
 ```
 
-All tests must pass before you open a pull request against `main`.
+## Publishing
 
-## GitHub Pages
+The canonical package is published to JSR through GitHub Actions using OIDC trusted publishing.
 
-This repository ships a product site in `/docs`.
+## Documentation
 
-1. Open **Settings → Pages**.
-2. Under **Build and deployment**, set **Source** to **Deploy from a branch**.
-3. Branch: **`main`**.
-4. Folder: **`/docs`**.
-5. Save, then wait for the Pages deployment.
-6. Open [https://theworker02.github.io/pagesmark/](https://theworker02.github.io/pagesmark/).
-
-Do not point Pages at `master`. The default branch is `main`.
+- [JSR package and generated API docs](https://jsr.io/@theworker02/pagesmark)
+- [Project site](https://theworker02.github.io/pagesmark/)
+- [Source repository](https://github.com/theworker02/pagesmark)
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md). Open pull requests against **`main`**.
+See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Security
 
-See [SECURITY.md](SECURITY.md). Please report vulnerabilities privately.
+See [SECURITY.md](SECURITY.md).
 
 ## License
 
 [MIT](LICENSE) © 2026 theworker02
-
-## Funding
-
-- GitHub Sponsors: [theworker02](https://github.com/sponsors/theworker02)
-- thanks.dev: [https://thanks.dev/u/gh/theworker02](https://thanks.dev/u/gh/theworker02)
