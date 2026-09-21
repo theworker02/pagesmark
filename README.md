@@ -1,4 +1,4 @@
-# pagesmark
+﻿# pagesmark
 
 <img src="docs/logo.svg" alt="pagesmark mark" width="96" height="96">
 
@@ -6,10 +6,10 @@
 
 [![JSR](https://jsr.io/badges/@theworker02/pagesmark)](https://jsr.io/@theworker02/pagesmark)
 ![version 1.2.0](https://img.shields.io/badge/version-1.2.0-C9A227?labelColor=0B1F33)
-![license MIT](https://img.shields.io/badge/license-MIT-0B1F33)
+![license MIT](https://img.shields.io/badge/license-Proprietary%20(source--available)-0B1F33)
 ![node >=18](https://img.shields.io/badge/node-%3E%3D18-C9A227?labelColor=0B1F33)
 
-**Package:** [`@theworker02/pagesmark`](https://jsr.io/@theworker02/pagesmark) · **Docs:** [GitHub Pages](https://theworker02.github.io/pagesmark/) · **Source:** [`theworker02/pagesmark`](https://github.com/theworker02/pagesmark)
+**Package:** [`@theworker02/pagesmark`](https://jsr.io/@theworker02/pagesmark) Â· **Docs:** [GitHub Pages](https://theworker02.github.io/pagesmark/) Â· **Source:** [`theworker02/pagesmark`](https://github.com/theworker02/pagesmark)
 
 ## Highlights
 
@@ -37,18 +37,18 @@ console.log(REQUIRED_FILES, PACKAGE.version, bundle["index.html"]);
 
 ### Site generation
 
-- `createBundle(name, options)` — build the complete three-file site in memory.
-- `init(dir, options)` — write the generated site to `docs/`.
-- `check(dir)` — validate that the required starter files exist.
-- `htmlFor(name)`, `stylesFor(color)`, `logoFor(color)` — generate individual assets.
+- `createBundle(name, options)` â€” build the complete three-file site in memory.
+- `init(dir, options)` â€” write the generated site to `docs/`.
+- `check(dir)` â€” validate that the required starter files exist.
+- `htmlFor(name)`, `stylesFor(color)`, `logoFor(color)` â€” generate individual assets.
 
 ### Metadata and validation
 
-- `PACKAGE` — package identity and version metadata.
-- `REQUIRED_FILES` — canonical PagesMark file list.
-- `isValidColor(value)` — validate `#RRGGBB` accent colors.
-- `NAVY`, `GOLD`, `LOGO`, `STYLES` — default design primitives.
-- `requiredFiles(path)` — resolve required file paths.
+- `PACKAGE` â€” package identity and version metadata.
+- `REQUIRED_FILES` â€” canonical PagesMark file list.
+- `isValidColor(value)` â€” validate `#RRGGBB` accent colors.
+- `NAVY`, `GOLD`, `LOGO`, `STYLES` â€” default design primitives.
+- `requiredFiles(path)` â€” resolve required file paths.
 
 ### Types
 
@@ -94,4 +94,5 @@ See [SECURITY.md](SECURITY.md).
 
 ## License
 
-[MIT](LICENSE) © 2026 theworker02
+**Source-available proprietary** — evaluation under [LICENSE](./LICENSE); commercial / production use via [COMMERCIAL.md](./COMMERCIAL.md). See [LICENSE_TRANSITION_NOTICE.md](./LICENSE_TRANSITION_NOTICE.md) and [NOTICE](./NOTICE).
+
