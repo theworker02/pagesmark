@@ -17,7 +17,7 @@ This project is **proprietary**. Production use, redistribution, and commercial 
 ![license MIT](https://img.shields.io/badge/license-Proprietary%20(source--available)-0B1F33)
 ![node >=18](https://img.shields.io/badge/node-%3E%3D18-C9A227?labelColor=0B1F33)
 
-**Package:** [`@theworker02/pagesmark`](https://jsr.io/@theworker02/pagesmark) Â· **Docs:** [GitHub Pages](https://theworker02.github.io/pagesmark/) Â· **Source:** [`theworker02/pagesmark`](https://github.com/theworker02/pagesmark)
+**Package:** [`@theworker02/pagesmark`](https://jsr.io/@theworker02/pagesmark) Ã‚Â· **Docs:** [GitHub Pages](https://theworker02.github.io/pagesmark/) Ã‚Â· **Source:** [`theworker02/pagesmark`](https://github.com/theworker02/pagesmark)
 
 ## Highlights
 
@@ -45,18 +45,18 @@ console.log(REQUIRED_FILES, PACKAGE.version, bundle["index.html"]);
 
 ### Site generation
 
-- `createBundle(name, options)` â€” build the complete three-file site in memory.
-- `init(dir, options)` â€” write the generated site to `docs/`.
-- `check(dir)` â€” validate that the required starter files exist.
-- `htmlFor(name)`, `stylesFor(color)`, `logoFor(color)` â€” generate individual assets.
+- `createBundle(name, options)` Ã¢â‚¬â€ build the complete three-file site in memory.
+- `init(dir, options)` Ã¢â‚¬â€ write the generated site to `docs/`.
+- `check(dir)` Ã¢â‚¬â€ validate that the required starter files exist.
+- `htmlFor(name)`, `stylesFor(color)`, `logoFor(color)` Ã¢â‚¬â€ generate individual assets.
 
 ### Metadata and validation
 
-- `PACKAGE` â€” package identity and version metadata.
-- `REQUIRED_FILES` â€” canonical PagesMark file list.
-- `isValidColor(value)` â€” validate `#RRGGBB` accent colors.
-- `NAVY`, `GOLD`, `LOGO`, `STYLES` â€” default design primitives.
-- `requiredFiles(path)` â€” resolve required file paths.
+- `PACKAGE` Ã¢â‚¬â€ package identity and version metadata.
+- `REQUIRED_FILES` Ã¢â‚¬â€ canonical PagesMark file list.
+- `isValidColor(value)` Ã¢â‚¬â€ validate `#RRGGBB` accent colors.
+- `NAVY`, `GOLD`, `LOGO`, `STYLES` Ã¢â‚¬â€ default design primitives.
+- `requiredFiles(path)` Ã¢â‚¬â€ resolve required file paths.
 
 ### Types
 
@@ -102,4 +102,8 @@ See [SECURITY.md](SECURITY.md).
 
 ## License
 
-**Source-available proprietary** — evaluation under [LICENSE](./LICENSE); commercial / production use via [COMMERCIAL.md](./COMMERCIAL.md). See [LICENSE_TRANSITION_NOTICE.md](./LICENSE_TRANSITION_NOTICE.md) and [NOTICE](./NOTICE).
+**Source-available proprietary** â€” evaluation under [LICENSE](./LICENSE); commercial / production use via [COMMERCIAL.md](./COMMERCIAL.md). See [LICENSE_TRANSITION_NOTICE.md](./LICENSE_TRANSITION_NOTICE.md) and [NOTICE](./NOTICE).
+
+## Status
+
+pagesmark is actively packaged for commercial licensing and acquisition diligence. See [ACQUISITION.md](./ACQUISITION.md) and [docs/acquisition/](./docs/acquisition/).
